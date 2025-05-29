@@ -1,11 +1,13 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.model;
+
+import com.gildedrose.inventory.model.ItemType;
 
 import java.io.Serializable;
 
 public class Item implements Serializable {
     private  String displayName;
-    private  int sellIn;
-    private  int quality;
+    protected   int sellIn;
+    protected   int quality;
     private ItemType itemType;
     private  int dailyRate;
 

@@ -1,8 +1,8 @@
 package com.gildedrose.inventory;
 
+import com.gildedrose.inventory.model.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +13,7 @@ public class InventoryTest {
     void given_Item_NormalItem_when_DayPasses_then_QualityDegrades_and_Sellin_Drops(){
 
         // given
-        Item item = new Item("NormalItem",1,3, ItemType.NORMAL_ITEM);
+        Item item = new NormalItem("NormalItem",1,3, ItemType.NORMAL_ITEM);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
@@ -29,7 +29,7 @@ public class InventoryTest {
     void given_Item_AgedBrie_when_DayPasses_then_QualityImproves_and_Sellin_Drops(){
 
         // given
-        Item item = new Item("AgedBrieItem",1,3, ItemType.AGED_BRIE);
+        Item item = new AgedBrie("AgedBrieItem",1,3, ItemType.AGED_BRIE);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
@@ -45,7 +45,7 @@ public class InventoryTest {
     void given_Item_Sulfuras_when_DayPasses_then_QualityDontDecrease_and_Sellin_Drops(){
 
         // given
-        Item item = new Item("SulfurasItem",1,3, ItemType.SULFURAS);
+        Item item = new Sulfuras("SulfurasItem",1,3, ItemType.SULFURAS);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
@@ -61,7 +61,7 @@ public class InventoryTest {
     void  given_Item_Conjured_when_DayPasses_then_Quality_Degrade_Twice_and_Sellin_Drops(){
 
         // given
-        Item item = new Item("ConjuredItem",3,6, ItemType.CONJURED);
+        Item item = new ConjuredItem("ConjuredItem",3,6, ItemType.CONJURED);
         Inventory inventory = new Inventory(List.of(item));
 
         // when

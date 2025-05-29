@@ -1,5 +1,7 @@
 package com.gildedrose.inventory;
 
+import com.gildedrose.inventory.model.*;
+
 import java.util.*;
 
 public class Inventory {
@@ -22,6 +24,14 @@ public class Inventory {
 
         for(Item item : items){
 
+           if(item instanceof Degreadeble){
+               ((Degreadeble) item).degrade(item.getItemType().dailyRate);
+           }else if(item instanceof Improvable){
+               ((Improvable) item).improve(item.getItemType().dailyRate);
+           }else if(item instanceof Sulfuras){
+               continue;
+           }
+
             if(item.getItemType() == ItemType.BACKSTAGE_PASSES){
                 if(item.getSellIn() <= 10 && item.getSellIn() > 5){
                     item.setDailyRate(item.getItemType().dailyRate * 2);
@@ -42,13 +52,7 @@ public class Inventory {
                 item.setDailyRate(item.getItemType().dailyRate);
             }
 
-            if(item.getItemType().ageType == AgeType.IMPROVE){
-               item.setQuality(item.getQuality() + item.getDailyRate());
-               item.setSellIn(item.getSellIn() - 1);
-            }else if(item.getItemType().ageType == AgeType.DEGRADE){
-                item.setQuality(item.getQuality() - item.getDailyRate());
-                item.setSellIn(item.getSellIn() - 1);
-            }
+            item.setSellIn(item.getSellIn() - 1);
         }
     }
 

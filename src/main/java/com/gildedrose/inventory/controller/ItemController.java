@@ -1,7 +1,7 @@
 package com.gildedrose.inventory.controller;
 
 import com.gildedrose.inventory.Inventory;
-import com.gildedrose.inventory.Item;
+import com.gildedrose.inventory.model.Item;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

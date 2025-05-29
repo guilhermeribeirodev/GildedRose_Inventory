@@ -1,8 +1,10 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.model;
+
+import com.gildedrose.inventory.AgeType;
 
 import static com.gildedrose.inventory.AgeType.*;
 
-enum ItemType {
+public enum ItemType {
     NORMAL_ITEM(1, DEGRADE),
     AGED_BRIE(1, IMPROVE),
     SULFURAS(0, NONE),
