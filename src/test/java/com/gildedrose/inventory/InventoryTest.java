@@ -17,7 +17,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(0, inventory.getItems().get(0).getSellIn());
@@ -33,7 +34,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(0, inventory.getItems().get(0).getSellIn());
@@ -49,7 +51,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(1, inventory.getItems().get(0).getSellIn());
@@ -65,7 +68,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(2, inventory.getItems().get(0).getSellIn());
@@ -81,7 +85,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(-1, inventory.getItems().get(0).getSellIn());
@@ -96,7 +101,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(9, inventory.getItems().get(0).getSellIn());
@@ -112,7 +118,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(4, inventory.getItems().get(0).getSellIn());
@@ -128,7 +135,8 @@ public class InventoryTest {
         Inventory inventory = new Inventory(List.of(item));
 
         // when
-        inventory.dayPasses();
+        List<Item> items = List.of(item);
+        inventory.dayPasses(items);
 
         // then
         assertEquals(-1, inventory.getItems().get(0).getSellIn());

@@ -8,7 +8,7 @@ public class MapperUtil {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static  Item[]  deserializeProduct(String json) throws JsonProcessingException {
+    public static  Item[] deserialize(String json) throws JsonProcessingException {
         return objectMapper.readValue(json, Item[].class);
     }
 }

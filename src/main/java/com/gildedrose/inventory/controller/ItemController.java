@@ -20,10 +20,9 @@ public class ItemController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<List<Item>> create(@RequestBody Item[] items) {
+    public ResponseEntity<List<Item>> create(@RequestBody List<Item> items) {
 
-        Inventory inventory = new Inventory(List.of(items));
-        inventory.dayPasses();
+        inventory.dayPasses(items);
 
         return ResponseEntity.ok(inventory.getItems());
     }

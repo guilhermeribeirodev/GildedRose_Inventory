@@ -17,14 +17,12 @@ public class Inventory {
         this.items = items;
     }
 
-    public void addItem(Item item) {
-        items.add(item);
-    }
-
-    public void dayPasses() {
+    public void dayPasses(List<Item> items) {
         date.roll(Calendar.DATE, true);
 
-        for (Item item : items) {
+        Iterator<Item> itemsIterator = items.iterator();
+        while(itemsIterator.hasNext()){
+            Item item = itemsIterator.next();
 
             int dailyRate = item.getItemType().dailyRate;
 

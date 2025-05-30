@@ -1,35 +1,36 @@
 package com.gildedrose.inventory.controller;
 
 import com.gildedrose.inventory.util.FileUtil;
-import com.gildedrose.inventory.util.MapperUtil;
-import com.gildedrose.inventory.model.Item;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.IOException;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@SpringBootTest
+@AutoConfigureMockMvc
 public class ItemControllerTest {
 
-        final TestRestTemplate testRestTemplate = new TestRestTemplate();
+    @Autowired
+    private MockMvc mockMvc;
 
-        @Test
-        void postItems() throws IOException {
-                String productJson = FileUtil.readFromFileToString("./items.json");
-                Item[] items = MapperUtil.deserializeProduct(productJson);
+    @Test
+    void shouldReturnDefaultMessage() throws Exception {
 
-                HttpHeaders header=new HttpHeaders();
-                header.setContentType(MediaType.APPLICATION_JSON);
+        final String itemsInputString = FileUtil.readFromFileToString("itemsInput.json");
+        final String itemsOutputString = FileUtil.readFromFileToString("itemsOutput.json");
 
-                //HttpEntity<Request> requestEntity=new HttpEntity<>(request,header);
-
-                final HttpEntity<Item[] > httpEntity = new HttpEntity<>(items, header);
-                ResponseEntity<Item[]> response = testRestTemplate
-                       // .withBasicAuth("ADMIN_TEST_LOGIN", "ADMIN_TEST_PASSWORD")
-                        .postForEntity("http://localhost:8080/items", httpEntity,   Item[].class);
-
-                assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        }
+        this.mockMvc.perform(post("/items")
+                        .content(itemsInputString)
+                        .contentType(APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json(itemsOutputString));
+    }
 }
