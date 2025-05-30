@@ -1,9 +1,11 @@
 package com.gildedrose.inventory;
 
 import com.gildedrose.inventory.model.*;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class Inventory {
     private List<Item> items = new ArrayList<>();
     Calendar date = Calendar.getInstance();
@@ -11,7 +13,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(List<Item> items ) {
+    public Inventory(List<Item> items) {
         this.items = items;
     }
 
@@ -22,41 +24,39 @@ public class Inventory {
     public void dayPasses() {
         date.roll(Calendar.DATE, true);
 
-        for(Item item : items){
+        for (Item item : items) {
 
-           if(item instanceof Degreadeble){
-               ((Degreadeble) item).degrade(item.getItemType().dailyRate);
-           }else if(item instanceof Improvable){
-               ((Improvable) item).improve(item.getItemType().dailyRate);
-           }else if(item instanceof Sulfuras){
-               continue;
-           }
+            int dailyRate = item.getItemType().dailyRate;
 
-            if(item.getItemType() == ItemType.BACKSTAGE_PASSES){
-                if(item.getSellIn() <= 10 && item.getSellIn() > 5){
+            if (item instanceof Degreadeble) {
+                if (((Expirable) item).isExpired(item.getSellIn())) {
+                    dailyRate *= 2;
+                }
+                ((Degreadeble) item).degrade(dailyRate);
+            } else if (item instanceof Improvable) {
+                ((Improvable) item).improve(dailyRate);
+            } else if (item instanceof Sulfuras) {
+                continue;
+            }
+
+            if (item.getItemType() == ItemType.BACKSTAGE_PASSES) {
+                if (item.getSellIn() <= 10 && item.getSellIn() > 5) {
                     item.setDailyRate(item.getItemType().dailyRate * 2);
                     item.setQuality(item.getQuality() + item.getDailyRate());
-                }else if(item.getSellIn() <= 5 && item.getSellIn() > 0){
+                } else if (item.getSellIn() <= 5 && item.getSellIn() > 0) {
                     item.setDailyRate(item.getItemType().dailyRate * 3);
                     item.setQuality(item.getQuality() + item.getDailyRate());
-                }else if(item.getSellIn() <= 0){
+                } else if (item.getSellIn() <= 0) {
                     item.setQuality(0);
                 }
                 item.setSellIn(item.getSellIn() - 1);
                 continue;
             }
-
-            if(item.getSellIn()  < 1){
-               item.setDailyRate(item.getItemType().dailyRate * 2);
-            }else{
-                item.setDailyRate(item.getItemType().dailyRate);
-            }
-
             item.setSellIn(item.getSellIn() - 1);
         }
     }
 
-    public  List<Item>  getItems() {
+    public List<Item> getItems() {
         return items;
     }
 }

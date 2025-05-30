@@ -16,6 +16,6 @@ public class NormalItem extends Item implements Degreadeble, Expirable  {
 
     @Override
     public boolean isExpired(int day) {
-        return super.s;
+        return super.sellIn <= 0;
     }
 }

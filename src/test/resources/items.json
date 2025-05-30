@@ -35,12 +35,7 @@
      "quality": 2,
      "itemType": "NORMAL_ITEM"
    },
-   {
-     "displayName":  "NO SUCH ITEM",
-     "sellIn": 2,
-     "quality": 2,
-     "itemType": ""
-   },
+
    {
      "displayName":  "Conjured",
      "sellIn": 2,

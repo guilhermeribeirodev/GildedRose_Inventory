@@ -77,7 +77,7 @@ public class InventoryTest {
     void given_Item_NormalItem_when_Day_After_and_SellIn_Passed_then_Quality_Degrade_Twice_and_Sellin_Drops(){
 
         // given
-        Item item = new Item("NormalItem",0,3, ItemType.NORMAL_ITEM);
+        Item item = new NormalItem("NormalItem",0,3, ItemType.NORMAL_ITEM);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
