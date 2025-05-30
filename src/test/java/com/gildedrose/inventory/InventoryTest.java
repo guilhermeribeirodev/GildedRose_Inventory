@@ -97,7 +97,7 @@ public class InventoryTest {
     void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Less_Than_10_then_Quality_Increases_Twice(){
 
         // given
-        Item item = new Item("BackstagePassesItem",10,5, ItemType.BACKSTAGE_PASSES);
+        Item item = new BackstagePasses("BackstagePassesItem",10,5, ItemType.BACKSTAGE_PASSES);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
@@ -114,7 +114,7 @@ public class InventoryTest {
     void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Less_Than_5_then_Quality_Increases_Triple(){
 
         // given
-        Item item = new Item("BackstagePassesItem",5,5, ItemType.BACKSTAGE_PASSES);
+        Item item = new BackstagePasses("BackstagePassesItem",5,5, ItemType.BACKSTAGE_PASSES);
         Inventory inventory = new Inventory(List.of(item));
 
         // when
@@ -131,7 +131,7 @@ public class InventoryTest {
     void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Expired_then_Quality_Drops_To_Zero(){
 
         // given
-        Item item = new Item("BackstagePassesItem",0,5, ItemType.BACKSTAGE_PASSES);
+        Item item = new BackstagePasses("BackstagePassesItem",0,5, ItemType.BACKSTAGE_PASSES);
         Inventory inventory = new Inventory(List.of(item));
 
         // when

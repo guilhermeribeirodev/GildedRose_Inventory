@@ -37,16 +37,8 @@ public class Inventory {
                 continue;
             }
 
-            if (item.getItemType() == ItemType.BACKSTAGE_PASSES) {
-                if (item.getSellIn() <= 10 && item.getSellIn() > 5) {
-                    item.setDailyRate(item.getItemType().dailyRate * 2);
-                    item.setQuality(item.getQuality() + item.getDailyRate());
-                } else if (item.getSellIn() <= 5 && item.getSellIn() > 0) {
-                    item.setDailyRate(item.getItemType().dailyRate * 3);
-                    item.setQuality(item.getQuality() + item.getDailyRate());
-                } else if (item.getSellIn() <= 0) {
-                    item.setQuality(0);
-                }
+            if (item instanceof  BackstagePasses) {
+                ((BackstagePasses) item).applyRules();
                 item.setSellIn(item.getSellIn() - 1);
                 continue;
             }
