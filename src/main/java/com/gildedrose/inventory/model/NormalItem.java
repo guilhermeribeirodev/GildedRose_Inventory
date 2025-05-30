@@ -2,9 +2,6 @@ package com.gildedrose.inventory.model;
 
 public class NormalItem extends Item implements Degreadeble, Expirable  {
 
-    public NormalItem() {
-    }
-
     public NormalItem(String displayName, int sellIn, int quality, ItemType itemType) {
         super(displayName, sellIn, quality, itemType);
     }

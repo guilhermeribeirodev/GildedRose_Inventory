@@ -1,7 +1,5 @@
 package com.gildedrose.inventory.model;
 
-import java.util.List;
-
 public class BackstagePasses extends  Item implements  Customisable{
     public BackstagePasses(String displayName, int sellIn, int quality, ItemType itemType) {
         super(displayName, sellIn, quality, itemType);

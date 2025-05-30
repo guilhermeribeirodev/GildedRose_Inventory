@@ -1,7 +1,5 @@
 package com.gildedrose.inventory.model;
 
-import com.gildedrose.inventory.model.ItemType;
-
 import java.io.Serializable;
 
 public class Item implements Serializable {
@@ -21,10 +19,6 @@ public class Item implements Serializable {
     }
 
     //  Getters
-    public String getDisplayName() {
-        return displayName;
-    }
-
     public int getSellIn() {
         return sellIn;
     }
@@ -48,10 +42,6 @@ public class Item implements Serializable {
 
     public void setQuality(int quality) {
         this.quality = quality;
-    }
-
-    public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
     }
 
     public void setDailyRate(int dailyRate) {

@@ -31,17 +31,19 @@ public class Inventory {
                     dailyRate *= 2;
                 }
                 ((Degreadeble) item).degrade(dailyRate);
+
             } else if (item instanceof Improvable) {
                 ((Improvable) item).improve(dailyRate);
+
             } else if (item instanceof Sulfuras) {
                 continue;
-            }
 
-            if (item instanceof  BackstagePasses) {
+            }else if (item instanceof  BackstagePasses) {
                 ((BackstagePasses) item).applyRules();
                 item.setSellIn(item.getSellIn() - 1);
                 continue;
             }
+
             item.setSellIn(item.getSellIn() - 1);
         }
     }
