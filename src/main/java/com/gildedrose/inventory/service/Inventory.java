@@ -1,4 +1,4 @@
-package com.gildedrose.inventory;
+package com.gildedrose.inventory.service;
 
 import com.gildedrose.inventory.model.*;
 import org.springframework.stereotype.Service;
@@ -20,11 +20,10 @@ public class Inventory {
     public void dayPasses(List<Item> items) {
         date.roll(Calendar.DATE, true);
 
-        Iterator<Item> itemsIterator = items.iterator();
-        while(itemsIterator.hasNext()){
-            Item item = itemsIterator.next();
+        this.items.addAll(items);
 
-            int dailyRate = item.getItemType().dailyRate;
+        for (Item item : this.items) {
+            int dailyRate = item.getItemType().getDailyRate();
 
             if (item instanceof Degreadeble) {
                 if (((Expirable) item).isExpired(item.getSellIn())) {
@@ -36,15 +35,18 @@ public class Inventory {
                 ((Improvable) item).improve(dailyRate);
 
             } else if (item instanceof Sulfuras) {
+               // this.items.add(item);
                 continue;
 
-            }else if (item instanceof  BackstagePasses) {
+            } else if (item instanceof BackstagePasses) {
                 ((BackstagePasses) item).applyRules();
                 item.setSellIn(item.getSellIn() - 1);
+               // this.items.add(item);
                 continue;
             }
 
             item.setSellIn(item.getSellIn() - 1);
+           // this.items.add(item);
         }
     }
 

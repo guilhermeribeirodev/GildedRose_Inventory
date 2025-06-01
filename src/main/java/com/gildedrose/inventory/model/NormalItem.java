@@ -6,6 +6,10 @@ public class NormalItem extends Item implements Degreadeble, Expirable  {
         super(displayName, sellIn, quality, itemType);
     }
 
+    public NormalItem(Item item) {
+        super(item.getDisplayName(), item.getSellIn(), item.getQuality(), item.getItemType());
+    }
+
     @Override
     public void degrade(int amount) {
         super.quality -= amount;

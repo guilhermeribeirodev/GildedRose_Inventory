@@ -1,6 +1,8 @@
 package com.gildedrose.inventory;
 
 import com.gildedrose.inventory.model.*;
+import com.gildedrose.inventory.service.Inventory;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,20 +11,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InventoryTest {
 
+    private Inventory subject;
+
+    @BeforeEach
+    void setUp(){
+        subject = new Inventory();
+    }
+
     @Test
     void given_Item_NormalItem_when_DayPasses_then_QualityDegrades_and_Sellin_Drops(){
 
         // given
         Item item = new NormalItem("NormalItem",1,3, ItemType.NORMAL_ITEM);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(0, inventory.getItems().get(0).getSellIn());
-        assertEquals(2, inventory.getItems().get(0).getQuality());
+        assertEquals(0, subject.getItems().get(0).getSellIn());
+        assertEquals(2, subject.getItems().get(0).getQuality());
 
     }
 
@@ -31,15 +39,14 @@ public class InventoryTest {
 
         // given
         Item item = new AgedBrie("AgedBrieItem",1,3, ItemType.AGED_BRIE);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(0, inventory.getItems().get(0).getSellIn());
-        assertEquals(4, inventory.getItems().get(0).getQuality());
+        assertEquals(0, subject.getItems().get(0).getSellIn());
+        assertEquals(4, subject.getItems().get(0).getQuality());
 
     }
 
@@ -48,15 +55,14 @@ public class InventoryTest {
 
         // given
         Item item = new Sulfuras("SulfurasItem",1,3, ItemType.SULFURAS);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(1, inventory.getItems().get(0).getSellIn());
-        assertEquals(3, inventory.getItems().get(0).getQuality());
+        assertEquals(1, subject.getItems().get(0).getSellIn());
+        assertEquals(3, subject.getItems().get(0).getQuality());
 
     }
 
@@ -65,15 +71,14 @@ public class InventoryTest {
 
         // given
         Item item = new ConjuredItem("ConjuredItem",3,6, ItemType.CONJURED);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(2, inventory.getItems().get(0).getSellIn());
-        assertEquals(4, inventory.getItems().get(0).getQuality());
+        assertEquals(2, subject.getItems().get(0).getSellIn());
+        assertEquals(4, subject.getItems().get(0).getQuality());
 
     }
 
@@ -82,15 +87,14 @@ public class InventoryTest {
 
         // given
         Item item = new NormalItem("NormalItem",0,3, ItemType.NORMAL_ITEM);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(-1, inventory.getItems().get(0).getSellIn());
-        assertEquals(1, inventory.getItems().get(0).getQuality());
+        assertEquals(-1, subject.getItems().get(0).getSellIn());
+        assertEquals(1, subject.getItems().get(0).getQuality());
     }
 
     @Test
@@ -98,15 +102,14 @@ public class InventoryTest {
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",10,5, ItemType.BACKSTAGE_PASSES);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(9, inventory.getItems().get(0).getSellIn());
-        assertEquals(7, inventory.getItems().get(0).getQuality());
+        assertEquals(9, subject.getItems().get(0).getSellIn());
+        assertEquals(7, subject.getItems().get(0).getQuality());
 
     }
 
@@ -115,15 +118,14 @@ public class InventoryTest {
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",5,5, ItemType.BACKSTAGE_PASSES);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(4, inventory.getItems().get(0).getSellIn());
-        assertEquals(8, inventory.getItems().get(0).getQuality());
+        assertEquals(4, subject.getItems().get(0).getSellIn());
+        assertEquals(8, subject.getItems().get(0).getQuality());
 
     }
 
@@ -132,15 +134,14 @@ public class InventoryTest {
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",0,5, ItemType.BACKSTAGE_PASSES);
-        Inventory inventory = new Inventory(List.of(item));
 
         // when
         List<Item> items = List.of(item);
-        inventory.dayPasses(items);
+        subject.dayPasses(items);
 
         // then
-        assertEquals(-1, inventory.getItems().get(0).getSellIn());
-        assertEquals(0, inventory.getItems().get(0).getQuality());
+        assertEquals(-1, subject.getItems().get(0).getSellIn());
+        assertEquals(0, subject.getItems().get(0).getQuality());
 
     }
 
