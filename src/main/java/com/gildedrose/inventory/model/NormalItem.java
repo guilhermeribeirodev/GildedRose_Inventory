@@ -11,8 +11,14 @@ public class NormalItem extends Item implements Degreadeble, Expirable  {
     }
 
     @Override
-    public void degrade(int amount) {
-        super.quality -= amount;
+    public Item degrade() {
+        if(isExpired(getSellIn())){
+            super.quality -= getDailyRate() * 2;
+        }else{
+            super.quality -= getDailyRate();
+        }
+
+        return  this;
     }
 
     @Override

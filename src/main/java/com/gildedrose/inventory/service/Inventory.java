@@ -17,37 +17,37 @@ public class Inventory {
         this.items = items;
     }
 
-    public void dayPasses(List<Item> items) {
+    public List<Item> dayPasses(List<Item> items) {
         date.roll(Calendar.DATE, true);
 
-        this.items.addAll(items);
+        List<Item> updatedList = new ArrayList<>();
 
-        for (Item item : this.items) {
-            int dailyRate = item.getItemType().getDailyRate();
+        for (Item item : items) {
+
+            Item returnItem = null;
 
             if (item instanceof Degreadeble) {
-                if (((Expirable) item).isExpired(item.getSellIn())) {
-                    dailyRate *= 2;
-                }
-                ((Degreadeble) item).degrade(dailyRate);
+                returnItem = ((Degreadeble) item).degrade();
 
             } else if (item instanceof Improvable) {
-                ((Improvable) item).improve(dailyRate);
+                returnItem = ((Improvable) item).improve();
 
             } else if (item instanceof Sulfuras) {
-               // this.items.add(item);
+                updatedList.add(item);
                 continue;
 
             } else if (item instanceof BackstagePasses) {
-                ((BackstagePasses) item).applyRules();
-                item.setSellIn(item.getSellIn() - 1);
-               // this.items.add(item);
+                returnItem = ((BackstagePasses) item).applyRules();
+                returnItem.setSellIn(item.getSellIn() - 1);
+                updatedList.add(returnItem);
                 continue;
             }
 
             item.setSellIn(item.getSellIn() - 1);
-           // this.items.add(item);
+            updatedList.add(returnItem);
         }
+
+        return updatedList;
     }
 
     public List<Item> getItems() {

@@ -11,8 +11,9 @@ public class AgedBrie extends Item implements Improvable {
     }
 
     @Override
-    public void improve(int amount) {
-        super.quality += amount;
+    public Item improve() {
+        super.quality += getDailyRate();
+        return this;
     }
 
 }

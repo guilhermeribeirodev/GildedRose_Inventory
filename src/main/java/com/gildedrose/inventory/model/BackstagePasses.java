@@ -10,15 +10,17 @@ public class BackstagePasses extends  Item implements  Customisable{
     }
 
     @Override
-    public void applyRules() {
+    public Item applyRules() {
         if (sellIn <= 10 && sellIn > 5) {
-            setDailyRate(getItemType().getDailyRate() * 2);
+            setDailyRate(getDailyRate() * 2);
             setQuality(getQuality() + getDailyRate());
         } else if (sellIn <= 5 && sellIn > 0) {
-            setDailyRate(getItemType().getDailyRate() * 3);
+            setDailyRate(getDailyRate() * 3);
             setQuality(getQuality() + getDailyRate());
         } else if (sellIn <= 0) {
             setQuality(0);
         }
+
+        return this;
     }
 }

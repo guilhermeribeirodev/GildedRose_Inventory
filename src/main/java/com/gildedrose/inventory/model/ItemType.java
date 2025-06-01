@@ -1,35 +1,19 @@
 package com.gildedrose.inventory.model;
 
-import com.gildedrose.inventory.AgeType;
-
-import static com.gildedrose.inventory.AgeType.*;
-
 public enum ItemType {
-    NORMAL_ITEM("Normal Item",1, DEGRADE),
-    AGED_BRIE("Aged Brie",1, IMPROVE),
-    SULFURAS("Sulfuras", 0, NONE),
-    CONJURED("Conjured", 2, DEGRADE),
-    BACKSTAGE_PASSES("Backstage Passes",1, NONE);
+    NORMAL_ITEM("Normal Item"),
+    AGED_BRIE("Aged Brie"),
+    SULFURAS("Sulfuras"),
+    CONJURED("Conjured"),
+    BACKSTAGE_PASSES("Backstage Passes");
 
-    private final  String displayName;
-    private final int dailyRate;
-    public final AgeType ageType;
+    private final String displayName;
 
-    ItemType(String displayName, int dailyRate, AgeType ageType) {
+    ItemType(String displayName) {
         this.displayName = displayName;
-        this.dailyRate = dailyRate;
-        this.ageType = ageType;
-    }
-
-    public  int getDailyRate(){
-        return  dailyRate;
     }
 
     public String getDisplayName() {
         return displayName;
-    }
-
-    public AgeType getAgeType() {
-        return ageType;
     }
 }

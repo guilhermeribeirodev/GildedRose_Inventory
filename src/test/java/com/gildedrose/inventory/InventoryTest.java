@@ -2,6 +2,7 @@ package com.gildedrose.inventory;
 
 import com.gildedrose.inventory.model.*;
 import com.gildedrose.inventory.service.Inventory;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,11 @@ public class InventoryTest {
         subject = new Inventory();
     }
 
+    @AfterEach
+    void tearDown(){
+        subject = null;
+    }
+
     @Test
     void given_Item_NormalItem_when_DayPasses_then_QualityDegrades_and_Sellin_Drops(){
 
@@ -26,11 +32,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems =  subject.dayPasses(items);
 
         // then
-        assertEquals(0, subject.getItems().get(0).getSellIn());
-        assertEquals(2, subject.getItems().get(0).getQuality());
+        assertEquals(0, updatedItems.get(0).getSellIn());
+        assertEquals(2, updatedItems.get(0).getQuality());
 
     }
 
@@ -42,11 +48,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems =  subject.dayPasses(items);
 
         // then
-        assertEquals(0, subject.getItems().get(0).getSellIn());
-        assertEquals(4, subject.getItems().get(0).getQuality());
+        assertEquals(0, updatedItems.get(0).getSellIn());
+        assertEquals(4, updatedItems.get(0).getQuality());
 
     }
 
@@ -58,11 +64,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems = subject.dayPasses(items);
 
         // then
-        assertEquals(1, subject.getItems().get(0).getSellIn());
-        assertEquals(3, subject.getItems().get(0).getQuality());
+        assertEquals(1, updatedItems.get(0).getSellIn());
+        assertEquals(3, updatedItems.get(0).getQuality());
 
     }
 
@@ -74,11 +80,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems = subject.dayPasses(items);
 
         // then
-        assertEquals(2, subject.getItems().get(0).getSellIn());
-        assertEquals(4, subject.getItems().get(0).getQuality());
+        assertEquals(2, updatedItems.get(0).getSellIn());
+        assertEquals(4, updatedItems.get(0).getQuality());
 
     }
 
@@ -90,11 +96,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems = subject.dayPasses(items);
 
         // then
-        assertEquals(-1, subject.getItems().get(0).getSellIn());
-        assertEquals(1, subject.getItems().get(0).getQuality());
+        assertEquals(-1, updatedItems.get(0).getSellIn());
+        assertEquals(1, updatedItems.get(0).getQuality());
     }
 
     @Test
@@ -105,11 +111,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems = subject.dayPasses(items);
 
         // then
-        assertEquals(9, subject.getItems().get(0).getSellIn());
-        assertEquals(7, subject.getItems().get(0).getQuality());
+        assertEquals(9, updatedItems.get(0).getSellIn());
+        assertEquals(7, updatedItems.get(0).getQuality());
 
     }
 
@@ -121,11 +127,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems =  subject.dayPasses(items);
 
         // then
-        assertEquals(4, subject.getItems().get(0).getSellIn());
-        assertEquals(8, subject.getItems().get(0).getQuality());
+        assertEquals(4, updatedItems.get(0).getSellIn());
+        assertEquals(8, updatedItems.get(0).getQuality());
 
     }
 
@@ -137,11 +143,11 @@ public class InventoryTest {
 
         // when
         List<Item> items = List.of(item);
-        subject.dayPasses(items);
+        List<Item> updatedItems = subject.dayPasses(items);
 
         // then
-        assertEquals(-1, subject.getItems().get(0).getSellIn());
-        assertEquals(0, subject.getItems().get(0).getQuality());
+        assertEquals(-1, updatedItems.get(0).getSellIn());
+        assertEquals(0, updatedItems.get(0).getQuality());
 
     }
 

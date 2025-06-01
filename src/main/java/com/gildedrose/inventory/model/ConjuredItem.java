@@ -11,8 +11,15 @@ public class ConjuredItem extends Item implements Degreadeble, Expirable{
     }
 
     @Override
-    public void degrade(int amount) {
-        super.quality -= amount;
+    public Item degrade() {
+        setDailyRate(getDailyRate() * 2);
+        if(isExpired(sellIn)){
+            super.quality -= getDailyRate() * 2;
+        }else {
+            super.quality -= getDailyRate();
+        }
+
+        return this;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Item implements Serializable {
     protected int sellIn;
     protected int quality;
     private ItemType itemType;
-    private int dailyRate;
+    private int dailyRate = 1;
 
     public Item() {
     }
@@ -55,7 +55,7 @@ public class Item implements Serializable {
         this.quality = quality;
     }
 
-    public void setDailyRate(int dailyRate) {
+    protected void setDailyRate(int dailyRate) {
         this.dailyRate = dailyRate;
     }
 

@@ -25,24 +25,24 @@ public class ItemController {
     @PostMapping("/items")
     public ResponseEntity<List<Item>> create(@RequestBody List<Item> items) {
 
-        List<Item> itemsObjects = new ArrayList<>();
+        List<Item> mappedItems = new ArrayList<>();
 
         for(Item item : items){
             if(item.getDisplayName().matches(AGED_BRIE.getDisplayName())) {
-                itemsObjects.add(new AgedBrie(item));
+                mappedItems.add(new AgedBrie(item));
             }else if(item.getDisplayName().matches(NORMAL_ITEM.getDisplayName())){
-                itemsObjects.add(new NormalItem(item));
+                mappedItems.add(new NormalItem(item));
             }else if(item.getDisplayName().matches(CONJURED.getDisplayName())){
-                itemsObjects.add(new ConjuredItem(item));
+                mappedItems.add(new ConjuredItem(item));
             }else if(item.getDisplayName().matches(SULFURAS.getDisplayName())){
-                itemsObjects.add(new Sulfuras(item));
+                mappedItems.add(new Sulfuras(item));
             }else if(item.getDisplayName().matches(BACKSTAGE_PASSES.getDisplayName())){
-                itemsObjects.add(new BackstagePasses(item));
+                mappedItems.add(new BackstagePasses(item));
             }
         }
 
-        inventory.dayPasses(itemsObjects);
+        List<Item> itemsResponse = inventory.dayPasses(mappedItems);
 
-        return ResponseEntity.ok(inventory.getItems());
+        return ResponseEntity.ok(itemsResponse);
     }
 }
