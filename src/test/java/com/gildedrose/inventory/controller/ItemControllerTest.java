@@ -1,6 +1,8 @@
 package com.gildedrose.inventory.controller;
 
+import com.gildedrose.inventory.model.Item;
 import com.gildedrose.inventory.util.FileUtil;
+import com.gildedrose.inventory.util.MapperUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,11 +22,19 @@ public class ItemControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+//    @MockitoBean
+//    private ItemsMapper itemsMapper;
+
     @Test
-    void shouldReturnDefaultMessage() throws Exception {
+    void shouldReturnValidOutputForGivenInput() throws Exception {
 
         final String itemsInputString = FileUtil.readFromFileToString("itemsInput.json");
+        final Item[] itemsInput = MapperUtil.deserialize(itemsInputString);
+
         final String itemsOutputString = FileUtil.readFromFileToString("itemsOutput.json");
+        final Item[] itemsOutput = MapperUtil.deserialize(itemsOutputString);
+
+        //when(itemsMapper.map(any())).thenReturn(Arrays.asList(itemsInput));
 
         this.mockMvc.perform(post("/items")
                         .content(itemsInputString)

@@ -7,14 +7,10 @@ import java.util.*;
 
 @Service
 public class Inventory {
-    private List<Item> items = new ArrayList<>();
+
     Calendar date = Calendar.getInstance();
 
     public Inventory() {
-    }
-
-    public Inventory(List<Item> items) {
-        this.items = items;
     }
 
     public List<Item> dayPasses(List<Item> items) {
@@ -50,7 +46,4 @@ public class Inventory {
         return updatedList;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
 }
