@@ -18,6 +18,8 @@ public class NormalItem extends Item implements Degreadeble, Expirable  {
             super.quality -= getDailyRate();
         }
 
+        setSellIn(getSellIn() - 1);
+
         return  this;
     }
 

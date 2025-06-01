@@ -24,22 +24,14 @@ public class Inventory {
 
             if (item instanceof Degreadeble) {
                 returnItem = ((Degreadeble) item).degrade();
-
             } else if (item instanceof Improvable) {
                 returnItem = ((Improvable) item).improve();
-
             } else if (item instanceof Sulfuras) {
-                updatedList.add(item);
-                continue;
-
+                returnItem = item;
             } else if (item instanceof BackstagePasses) {
                 returnItem = ((BackstagePasses) item).applyRules();
-                returnItem.setSellIn(item.getSellIn() - 1);
-                updatedList.add(returnItem);
-                continue;
             }
 
-            item.setSellIn(item.getSellIn() - 1);
             updatedList.add(returnItem);
         }
 

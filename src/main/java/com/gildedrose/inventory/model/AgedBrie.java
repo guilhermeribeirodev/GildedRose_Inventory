@@ -13,6 +13,7 @@ public class AgedBrie extends Item implements Improvable {
     @Override
     public Item improve() {
         super.quality += getDailyRate();
+        setSellIn(getSellIn() - 1);
         return this;
     }
 

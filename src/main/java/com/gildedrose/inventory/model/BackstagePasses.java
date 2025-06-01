@@ -21,6 +21,8 @@ public class BackstagePasses extends  Item implements  Customisable{
             setQuality(0);
         }
 
+        setSellIn(getSellIn() - 1);
+
         return this;
     }
 }
