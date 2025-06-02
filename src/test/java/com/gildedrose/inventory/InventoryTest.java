@@ -89,7 +89,7 @@ public class InventoryTest {
     }
 
     @Test
-    void given_Item_NormalItem_when_Day_After_and_SellIn_Passed_then_Quality_Degrade_Twice_and_Sellin_Drops(){
+    void given_Item_NormalItem_when_Day_Passes_and_SellIn_Passed_then_Quality_Degrade_Twice_and_Sellin_Drops(){
 
         // given
         Item item = new NormalItem("NormalItem",0,3, ItemType.NORMAL_ITEM);
@@ -104,7 +104,7 @@ public class InventoryTest {
     }
 
     @Test
-    void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Less_Than_10_then_Quality_Increases_Twice(){
+    void given_Item_Backstage_Passes_when_Day_Passes_and_SellIn_Less_Than_10_then_Quality_Increases_Twice(){
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",10,5, ItemType.BACKSTAGE_PASSES);
@@ -120,7 +120,7 @@ public class InventoryTest {
     }
 
     @Test
-    void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Less_Than_5_then_Quality_Increases_Triple(){
+    void given_Item_Backstage_Passes_when_Day_Passes_and_SellIn_Less_Than_5_then_Quality_Increases_Triple(){
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",5,5, ItemType.BACKSTAGE_PASSES);
@@ -136,7 +136,7 @@ public class InventoryTest {
     }
 
     @Test
-    void given_Item_Backstage_Passes_when_Day_After_and_SellIn_Expired_then_Quality_Drops_To_Zero(){
+    void given_Item_Backstage_Passes_when_Day_Passes_and_SellIn_Expired_then_Quality_Drops_To_Zero(){
 
         // given
         Item item = new BackstagePasses("BackstagePassesItem",0,5, ItemType.BACKSTAGE_PASSES);
@@ -149,6 +149,20 @@ public class InventoryTest {
         assertEquals(-1, updatedItems.get(0).getSellIn());
         assertEquals(0, updatedItems.get(0).getQuality());
 
+    }
+
+    @Test
+    void given_Invalid_Item_when_Day_Passes_then_Return_No_Such_Item(){
+
+        // given
+        Item item = new Item("InvalidItem",0,5, null);
+
+        // when
+        List<Item> items = List.of(item);
+        List<Item> updatedItems = subject.dayPasses(items);
+
+        //then
+        assertEquals("NO SUCH ITEM", updatedItems.get(0).getDisplayName());
     }
 
 }

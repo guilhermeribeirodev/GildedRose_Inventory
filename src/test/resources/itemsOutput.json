@@ -2,50 +2,42 @@
     {
       "displayName":  "Aged Brie",
       "sellIn": 0,
-      "quality": 2,
-      "itemType": "AGED_BRIE"
+      "quality": 2
     },
    {
      "displayName":  "Backstage Passes",
      "sellIn": -2,
-     "quality": 0,
-     "itemType": "BACKSTAGE_PASSES"
+     "quality": 0
    },
    {
      "displayName":  "Backstage Passes",
      "sellIn": 8,
-     "quality": 4,
-     "itemType": "BACKSTAGE_PASSES"
+     "quality": 4
    },
    {
      "displayName":  "Sulfuras",
      "sellIn": 2,
-     "quality": 2,
-     "itemType": "SULFURAS"
+     "quality": 2
    },
    {
      "displayName":  "Normal Item",
      "sellIn": -2,
-     "quality": 53,
-     "itemType": "NORMAL_ITEM"
+     "quality": 53
    },
    {
      "displayName":  "Normal Item",
      "sellIn": 1,
-     "quality": 1,
-     "itemType": "NORMAL_ITEM"
+     "quality": 1
    },
    {
      "displayName":  "Conjured",
      "sellIn": 1,
-     "quality": 0,
-     "itemType": "CONJURED"
+     "quality": 0
    },
    {
      "displayName":  "Conjured",
      "sellIn": -2,
-     "quality": 1,
-     "itemType": "CONJURED"
+     "quality": 1
    }
   ]
 
