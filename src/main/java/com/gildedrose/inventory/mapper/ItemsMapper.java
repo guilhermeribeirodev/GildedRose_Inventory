@@ -25,6 +25,8 @@ public class ItemsMapper {
                 mappedItems.add(new Sulfuras(item));
             }else if(item.getDisplayName().matches(BACKSTAGE_PASSES.getDisplayName())){
                 mappedItems.add(new BackstagePasses(item));
+            }else{
+                mappedItems.add(new Item("NO SUCH ITEM",0,0,null));
             }
         }
 

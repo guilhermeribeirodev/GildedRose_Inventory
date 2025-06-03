@@ -30,6 +30,11 @@
      "quality": 1
    },
    {
+     "displayName":  "NO SUCH ITEM",
+     "sellIn": 0,
+     "quality": 0
+   },
+   {
      "displayName":  "Conjured",
      "sellIn": 1,
      "quality": 0

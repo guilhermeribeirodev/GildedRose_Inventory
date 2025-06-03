@@ -30,8 +30,8 @@ public class Inventory {
                 returnItem = item;
             } else if (item instanceof BackstagePasses) {
                 returnItem = ((BackstagePasses) item).applyRules();
-            }else {
-                returnItem = new Item("NO SUCH ITEM",0,0,null);
+            }else{
+                returnItem = new Item(item.getDisplayName(),0,0,null);
             }
 
             updatedList.add(returnItem);

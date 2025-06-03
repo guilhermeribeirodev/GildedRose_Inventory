@@ -155,7 +155,7 @@ public class InventoryTest {
     void given_Invalid_Item_when_Day_Passes_then_Return_No_Such_Item(){
 
         // given
-        Item item = new Item("InvalidItem",0,5, null);
+        Item item = new Item("NO SUCH ITEM",2,2, null);
 
         // when
         List<Item> items = List.of(item);
